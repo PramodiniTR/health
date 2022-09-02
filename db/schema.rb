@@ -10,14 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_01_143854) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_02_073157) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "clients", force: :cascade do |t|
+    t.integer "client_id"
+    t.string "client_name"
+    t.text "description"
+    t.integer "client_phone"
+    t.string "client_email"
+    t.string "client_primary_contact_name"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "jwt_denylist", force: :cascade do |t|
     t.string "jti", null: false
     t.datetime "exp", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer "project_id"
+    t.string "name"
+    t.string "project_type"
+    t.integer "project_manager"
+    t.datetime "start_date"
+    t.datetime "end_date", precision: nil
+    t.integer "client_id"
+    t.integer "project_closure_status"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

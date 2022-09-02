@@ -42,9 +42,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'sunspot_solr'
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
+gem 'robocop'
 gem 'devise'
 gem 'devise-jwt'
 gem 'rack-cors'
+gem 'sunspot_rails'
