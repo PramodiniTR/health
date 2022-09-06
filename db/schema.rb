@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_02_073157) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_05_084957) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -33,6 +33,41 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_073157) do
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
+  create_table "login_audits", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "login_date_time"
+    t.datetime "logout_date_time"
+    t.string "login_error"
+    t.string "login_status"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "master_types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "type"
+    t.integer "status"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "project_statuses", force: :cascade do |t|
+    t.integer "project_id"
+    t.datetime "month"
+    t.integer "project_monthly_status"
+    t.string "utilization"
+    t.decimal "revenue_lost"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.integer "project_id"
     t.string "name"
@@ -42,6 +77,52 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_02_073157) do
     t.datetime "end_date", precision: nil
     t.integer "client_id"
     t.integer "project_closure_status"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.integer "phone"
+    t.integer "status"
+    t.datetime "joining_date"
+    t.string "employee_type"
+    t.decimal "salary"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_projects", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_skills", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "skill"
+    t.string "created_by"
+    t.string "updated_by"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_utilizations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+    t.datetime "month"
+    t.datetime "year"
+    t.string "utilization"
     t.string "created_by"
     t.string "updated_by"
     t.datetime "created_at", null: false

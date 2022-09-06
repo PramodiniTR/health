@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  project_id: 1
+  month: 2022-09-05 14:09:04
+  project_monthly_status: 1
+  utilization: MyString
+  revenue_lost: 9.99
+  created_by: MyString
+  updated_by: MyString
+
+two:
+  project_id: 1
+  month: 2022-09-05 14:09:04
+  project_monthly_status: 1
+  utilization: MyString
+  revenue_lost: 9.99
+  created_by: MyString
+  updated_by: MyString

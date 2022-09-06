@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  resources :clients do
-    collection do
-      get :search
-    end
-  end
+  resources :clients 
   resources :projects
   devise_for :users,
              controllers: {
