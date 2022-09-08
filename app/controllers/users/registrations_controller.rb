@@ -11,11 +11,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   
     def register_success
-      if @user.save
-        # Deliver the signup email
         UserNotifierMailer.send_sign_up_email(@user).deliver
-        render json: {message: "SIGNUP "}
-      end
+        render json: {message: "signed up successfully"}
     end
   
     def register_failed
