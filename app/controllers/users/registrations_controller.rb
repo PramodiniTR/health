@@ -4,13 +4,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
     private
   
     def respond_with(resource, _opts = {})
-      register_success && return if resource.persisted?
+      register_success 
+      return if resource.persisted?
   
       register_failed
     end
   
     def register_success
-      render json: { message: 'Signed up sucessfully.' }
+      if @user.save
+        # Deliver the signup email
+        UserNotifierMailer.send_sign_up_email(@user).deliver
+        render json: {message: "SIGNUP "}
+      end
     end
   
     def register_failed

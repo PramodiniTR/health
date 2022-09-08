@@ -12,6 +12,7 @@ module HEALTH
     config.load_defaults 7.0
 
     config.session_store :cookie_store, key: '_interslice_session'
+    config.active_job.queue_adopter = :sidekiq
 
     config.middleware.use ActionDispatch::Cookies 
 
