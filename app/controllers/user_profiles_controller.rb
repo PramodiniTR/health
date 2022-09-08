@@ -1,6 +1,6 @@
 class UserProfilesController < ApplicationController
     before_action :set_user_profile, only: %i[ show update destroy ]
-    before_action :authenticate User!
+    #before_action :authenticate User!
 
     def index
         @user_profiles = UserProfile.all
