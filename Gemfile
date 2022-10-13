@@ -50,5 +50,7 @@ gem 'robocop'
 gem 'devise'
 gem 'devise-jwt'
 gem 'rack-cors'
+gem 'will_paginate'
 gem 'sunspot_rails'
 gem 'sidekiq'
+
